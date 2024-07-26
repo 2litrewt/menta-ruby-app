@@ -1,6 +1,10 @@
 ## 環境構築
 
+<<<<<<< HEAD
 ### リポジトリをforkする
+=======
+### リポジトリを fork する
+>>>>>>> 9b36e4d (readmeの修正)
 
 <img width="1427" alt="スクリーンショット 2024-07-03 10 19 21" src="https://github.com/user-attachments/assets/40bc1411-d494-43f1-b13e-8bf010b5a836">
 
@@ -10,6 +14,7 @@
 
 「Create a new fork」画面が表示されます。以下項目を適宜入力・選択し、「Create fork」をクリックして下さい。
 
+<<<<<<< HEAD
 | 項目 | 概要 |
 | --- | --- |
 | Owner | リポジトリの所有者を選択します。デフォルトでは自分自身のアカウント名が表示されているので、そのままでかまいません。 |
@@ -21,16 +26,37 @@
 ### forkしたリポジトリをcloneする
 
 フォークしたリポジトリを、ローカルのPCへクローン（コピー）して編集できるようにしましょう。
+=======
+| 項目                             | 概要                                                                                                                                             |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Owner                            | リポジトリの所有者を選択します。デフォルトでは自分自身のアカウント名が表示されているので、そのままでかまいません。                               |
+| Repository name                  | フォークしたリポジトリの名前を付けます。デフォルトで表示されているのは、フォーク元のリポジトリ名です。特に問題なければそのままでもかまいません。 |
+| Description                      | フォークに関する説明を任意で入力します。デフォルトで表示されているのは、フォーク元の説明です。特に問題なければそのままでもかまいません。         |
+| Copy the main branch only        | このチェックを外すと全てのブランチがコピーされます。                                                                                             |
+| 今回はチェックを外してください。 |
+
+### fork したリポジトリを clone する
+
+フォークしたリポジトリを、ローカルの PC へクローン（コピー）して編集できるようにしましょう。
+>>>>>>> 9b36e4d (readmeの修正)
 
 <img width="1428" alt="スクリーンショット 2024-07-03 10 34 46" src="https://github.com/user-attachments/assets/dc285818-0c2a-4869-bcf2-57949f8c9500">
 
 フォークしたリポジトリで`Code`をクリック
 
+<<<<<<< HEAD
 リポジトリのURLが表示されるので、URL欄の横にあるコピーボタンをクリック
 
 ターミナル（端末）などを開いて、リポジトリを配置したい階層までcdコマンドで移動する
 
 リポジトリをcloneする
+=======
+リポジトリの URL が表示されるので、URL 欄の横にあるコピーボタンをクリック
+
+ターミナル（端末）などを開いて、リポジトリを配置したい階層まで cd コマンドで移動する
+
+リポジトリを clone する
+>>>>>>> 9b36e4d (readmeの修正)
 
 ```ruby
 git clone 【クローン先のURL】
@@ -39,9 +65,44 @@ git clone 【クローン先のURL】
 git clone [git@github.com](mailto:git@github.com):Kaiwa-Jun/menta-ruby-app.git
 ```
 
+<<<<<<< HEAD
 ## 完成状態を確認する
 
 cloneができたらまずは完成状態を確認しましょう！
+=======
+## PR 作成を Slack で通知する設定
+
+PR の作成やレビューコメントをした際に Slack で通知されるようにします
+
+1. 下記から Github App のインストールする
+
+https://github.com/apps/slack
+
+1. 下の画像の`Only select repositories`を選択し、`Select repositories`をクリック
+2. `menta-ruby-app`を選択する
+3. save をクリック
+
+![スクリーンショット 2024-07-23 22 50 08](https://github.com/user-attachments/assets/6b500ddf-b98b-4b93-bd38-a37d4638ffb9)
+
+**※ここまでできたら、リポジトリの URL を Slack で共有してください**
+
+```
+※鹿岩がやる操作
+/github subscribe list features
+/github subscribe owner/repository comments,pulls
+/github unsubscribe owner/repository issues,commits,releases,deployments
+```
+
+### リポジトリへのアクセス権限の設定をする
+
+1. 下記 URL を参考にして’[Kaiwa-Jun](https://github.com/Kaiwa-Jun)’をコラボレーターとして設定してください
+
+https://docs.github.com/ja/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/managing-teams-and-people-with-access-to-your-repository#inviting-a-team-or-person
+
+## 完成状態を確認する
+
+clone ができたらまずは完成状態を確認しましょう！
+>>>>>>> 9b36e4d (readmeの修正)
 
 ```ruby
 cd menta-ruby-app
