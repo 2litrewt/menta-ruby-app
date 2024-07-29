@@ -50,19 +50,17 @@ docker-compose build
 docker-compose up
 ```
 
-ブラウザで`http://localhost:3001/`にアクセスする
+ブラウザで`http://localhost:3000/`にアクセスする
 
-エラー画面が表示されますが、`Create database`をクリックすればOKです
+エラー画面が表示されますが、`Create database`をクリックすれば OK です
 
 <img width="1428" alt="スクリーンショット 2024-07-03 9 15 18" src="https://github.com/user-attachments/assets/377ff927-d39e-4e5b-bfd3-d8da074e1fec">
 
 画面の確認(完成品)
 
-どんな機能あるかの説明、動かしてみてって書く
+どんな機能あるか動かしてみてください
 
 ### ブランチを切り替えて課題をスタートする
-
-（もしかしたら違うかも）
 
 ```ruby
 
@@ -79,8 +77,11 @@ git branch -a
 ```
 
 ```ruby
+# baseブランチにチェックアウトする（このbaseブランチに成果物が集約されていきます）
+git checkout -b base origin/base
+
 # 課題１（feature1/skip-unnecessary-files）にブランチを切り替える例
-git checkout -b feature1/skip-unnecessary-files origin/feature1/skip-unnecessary-files
+git checkout -b feature1/skip-unnecessary-files
 
 # feature1/skip-unnecessary-filesに切り替わっているか確認
 git branch
@@ -88,23 +89,113 @@ git branch
 * feature1/skip-unnecessary-files
 ```
 
-各課題の番号ごとにREADME.mdがあります。課題1の場合はREADME1.mdです。
+各課題の番号ごとに README.md があります。課題 1 の場合は README1.md です。
 
-README1.mdの指示（チェックボックス）を実装していく
+README1.md の指示（チェックボックス）を実装していく
 
-実装完了したら、Pull Requestを作成する
+### プルリクエストを作成する
 
-OKであれば、私の方でdevelopブランチへマージします
+実装が完了したら、プルリクエストを作成します
 
-### マージされたらローカルのdevelopブランチを最新にしましょう
-
-実際の開発現場では、`開発 → PR → developへのマージ`が各開発者ごとに行われます
-
-なので、他の開発者が行ったコードの変更がリモートのdevelopブランチに集約されていきます
-
-リモートのdevelopブランチとローカルのdevelopブランチに差異が出てしまうため、定期的にローカルのdevelopを最新にしましょう
+1. ブランチの変更をコミットする
 
 ```
-git checkout develop
+git add .
+git commit -m "不必要なファイルの生成を避ける設定" ←自分で分かればなんでもいいです
+```
+
+1. リモートリポジトリにプッシュする
+
+```
+git push origin feature1/skip-unnecessary-files
+```
+
+1. GitHub のリポジトリページで PR を作成する
+
+   1. リポジトリページの上部にある`Compare&Pull request`をクリック
+   2. 下記のようなフォーマットで PR を作成
+
+      (今後の開発現場で PR を作成できるように下記のように作成してみましょう！)
+
+```
+# 概要
+例：投稿の削除機能を実装しました
+例：投稿の編集時に編集時刻が反映されないバグの修正をしました
+
+# 再現手順
+削除機能の例
+1. 投稿一覧画面（http://localhost:3000/posts）に遷移
+2. 任意の投稿の削除アイコンをクリック
+3. 削除確認のモーダルが表示される
+4. 「削除」ボタンをクリック
+
+# 期待する動作
+「削除」ボタンをクリック後、投稿一覧画面（http://localhost:3000/posts）に自動で遷移し、対象の投稿が削除されること
+
+# 動作環境
+必要に応じて書く
+例：管理者権限でログインしておくこと
+例：ログイン状態でのみ削除されること
+```
+
+1. 開発したブランチから base ブランチにマージされるように設定する
+   1. 画面左上が`ご自身のリポジトリ`であることを確認する
+   2. マージ先が`base`となっていることを確認する
+   3. 上記フォーマットで PR の内容を記述する
+   4. `Create pull request`をクリックで PR が作成されます
+
+![スクリーンショット 2024-07-24 1 06 43](https://github.com/user-attachments/assets/30399907-eb8b-4052-b257-2ceddf661153)
+
+PR を私が確認して OK であれば base へマージされます
+
+### マージされたらローカルの base ブランチを最新にしましょう
+
+実際の開発現場では、`開発 → PR → baseへのマージ`が各開発者ごとに行われます
+
+なので、他の開発者が行ったコードの変更がリモートの base ブランチに集約されていきます
+
+リモートの base ブランチとローカルの base ブランチに差異が出てしまうため、定期的にローカルの base を最新にしましょう
+
+```ruby
+git checkout base
 git pull
+```
+
+### 実装中のコードも定期的に最新にしましょう
+
+例えば、、、
+
+```
+step1：実装完了して、PR のレビュー待ち
+step2：実装途中
+base：step1 がレビュー中なので step1 はマージされていない
+```
+
+この後、step2 の実装途中に step1 のレビューが終わり、base ブランチに step1 の内容がマージされたとします
+
+ここで step2 の内容を step1 の実装内容を取り込んだものにしたいと考えます
+
+手順としては下記になります
+
+```ruby
+# baseブランチを最新にする（baseをstep1を取り込んだ状態にする）
+git checkout base
+git pull
+
+# step2にstep1を取り込んだ状態のbaseブランチを取り込む
+git checkout step2 　←ブランチ名は簡略化してます
+
+git merge base
+or
+git rebase base
+```
+
+### スタイルの反映
+
+TailwindCSS でのスタイリングがなぜか下記コマンドを実行しないと反映されない状態です
+
+今後解消したいと思いますが、一旦下記コマンドで対応してください
+
+```
+docker-compose exec web yarn run build:css
 ```
