@@ -1,6 +1,8 @@
 ## 環境構築
 
+
 ### リポジトリを fork する
+
 
 <img width="1427" alt="スクリーンショット 2024-07-03 10 19 21" src="https://github.com/user-attachments/assets/40bc1411-d494-43f1-b13e-8bf010b5a836">
 
@@ -9,6 +11,7 @@
 <img width="1429" alt="スクリーンショット 2024-07-03 10 24 16" src="https://github.com/user-attachments/assets/1ff41ebb-85e0-4bab-9baa-48370a457f5a">
 
 「Create a new fork」画面が表示されます。以下項目を適宜入力・選択し、「Create fork」をクリックして下さい。
+
 
 | 項目                             | 概要                                                                                                                                             |
 | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -22,9 +25,11 @@
 
 フォークしたリポジトリを、ローカルの PC へクローン（コピー）して編集できるようにしましょう。
 
+
 <img width="1428" alt="スクリーンショット 2024-07-03 10 34 46" src="https://github.com/user-attachments/assets/dc285818-0c2a-4869-bcf2-57949f8c9500">
 
 フォークしたリポジトリで`Code`をクリック
+
 
 リポジトリの URL が表示されるので、URL 欄の横にあるコピーボタンをクリック
 
@@ -38,6 +43,7 @@ git clone 【クローン先のURL】
 // 多分下記のようになると思いますので、実行してください
 git clone [git@github.com](mailto:git@github.com):Kaiwa-Jun/menta-ruby-app.git
 ```
+
 
 ## PR 作成を Slack で通知する設定
 
@@ -79,9 +85,11 @@ docker-compose build
 docker-compose up
 ```
 
+
 ブラウザで`http://localhost:3000/`にアクセスする
 
 エラー画面が表示されますが、`Create database`をクリックすれば OK です
+
 
 <img width="1428" alt="スクリーンショット 2024-07-03 9 15 18" src="https://github.com/user-attachments/assets/377ff927-d39e-4e5b-bfd3-d8da074e1fec">
 
@@ -90,6 +98,7 @@ docker-compose up
 どんな機能あるか動かしてみてください
 
 ### ブランチを切り替えて課題をスタートする
+
 
 ```ruby
 
@@ -106,17 +115,20 @@ git branch -a
 ```
 
 ```ruby
+
 # baseブランチにチェックアウトする（このbaseブランチに成果物が集約されていきます）
 git checkout -b base origin/base
 
 # 課題１（feature1/skip-unnecessary-files）にブランチを切り替える例
 git checkout -b feature1/skip-unnecessary-files
 
+
 # feature1/skip-unnecessary-filesに切り替わっているか確認
 git branch
   develop
 * feature1/skip-unnecessary-files
 ```
+
 
 各課題の番号ごとに README.md があります。課題 1 の場合は README1.md です。
 
