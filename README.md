@@ -85,11 +85,9 @@ docker-compose build
 docker-compose up
 ```
 
-
 ブラウザで`http://localhost:3000/`にアクセスする
 
 エラー画面が表示されますが、`Create database`をクリックすれば OK です
-
 
 <img width="1428" alt="スクリーンショット 2024-07-03 9 15 18" src="https://github.com/user-attachments/assets/377ff927-d39e-4e5b-bfd3-d8da074e1fec">
 
@@ -98,7 +96,6 @@ docker-compose up
 どんな機能あるか動かしてみてください
 
 ### ブランチを切り替えて課題をスタートする
-
 
 ```ruby
 
@@ -115,20 +112,17 @@ git branch -a
 ```
 
 ```ruby
-
 # baseブランチにチェックアウトする（このbaseブランチに成果物が集約されていきます）
 git checkout -b base origin/base
 
 # 課題１（feature1/skip-unnecessary-files）にブランチを切り替える例
 git checkout -b feature1/skip-unnecessary-files
 
-
 # feature1/skip-unnecessary-filesに切り替わっているか確認
 git branch
   develop
 * feature1/skip-unnecessary-files
 ```
-
 
 各課題の番号ごとに README.md があります。課題 1 の場合は README1.md です。
 
