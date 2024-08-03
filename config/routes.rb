@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'generate/controller'
   get 'generate/tops'
   get 'generate/new'
-  root "tops#index"
+  root :to => "tops#index"
   resources :users, only: [:new]
   resources :sessions, only: [:new]
 end
