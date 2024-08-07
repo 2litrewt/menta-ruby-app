@@ -3,8 +3,20 @@ class SessionsController < ApplicationController
   end
 
   def create
-    ログイン成功時：ルート画面に遷移すること
-    ログイン失敗時：ログインの入力画面を再度表示すること
+    user = login(params[:email], params[:password])
+
+    if user
+      redirect_back_or_to root_path, notice: 'ログインしました。'
+    else
+    flash.now[:alert] = 'メールアドレスまたはパスワードが違います'
+    render:new
+    end
+  end
+
+  private
+
+  def session_params
+    params.require(:session).permit(:email, :password)
   end
   
 end

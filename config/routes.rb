@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  get '/login', to: 'session#new'
   root to: 'tops#index'
-  resources :users,only: [:new]
-  resources :sessions,only: [:new, :create]
+  resources :users, only: [:new, :create]
+  resources :sessions, only: [:new, :create]
 end
