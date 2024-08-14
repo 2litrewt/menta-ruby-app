@@ -2,12 +2,13 @@
   <nav class="container mx-auto flex justify-between items-center">
     <%= link_to 'Top', root_path, class: "text-white font-semibold" %>
     <div>
-      <%= link_to 'Login', new_session_path, class: "text-white mx-2" %>
-      <%= link_to 'Sign up', new_user_path, class: "text-white mx-2" %>
-    </div>
-    
-    <% if logged_in? %>
+        <% if logged_in? %>
       <%= current_user.email %>
-    <% end %>
+        <span class="text-white mx-2"><%= current_user.email %></span>
+      <% else %>
+        <%= link_to 'Sign Up', new_user_path, class: "text-white mx-2" %>
+        <%= link_to 'Login', new_session_path, class: "text-white mx-2" %>
+      <% end %>
+    </div>
   </nav>
 </header>
