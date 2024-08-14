@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
     flash.now[:alert] = 'メールアドレスまたはパスワードが違います'
     render:new
     end
-  end
+  end　
 
   private
 
